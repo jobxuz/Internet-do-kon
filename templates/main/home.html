@@ -1,0 +1,22 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+	<div class="row">
+		{% for product in products %}
+		<div class="col-lg-4">
+				{% if product.photo %}
+  					<img style="width: 100%; height: 300px" src="{{ product.photo.url }}" class="card-img-top" alt="{{product.name}}">
+				{% endif %}
+			<div class="box-element product">
+				<h6><strong>{{ product.name}}</strong></h6>
+				<hr>
+
+				<button type="submit" class="btn btn-outline-secondary add-btn">Add to Cart</button>
+				<a class="btn btn-outline-success" href="{% url 'cart_url'  %}">View</a>
+				<h4 style="display: inline-block; float: right"><strong>{{ product.price }} $</strong></h4>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+{% endblock content %}
